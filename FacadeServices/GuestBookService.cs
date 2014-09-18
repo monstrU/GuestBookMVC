@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,18 +14,15 @@ namespace FacadeServices
 {
     public class GuestBookService : IGuestBookService
     {
-        protected string  ConnectionString { get;private set; }
         public IDataProvider Provider { get;private  set; }
 
         public GuestBookService(IDataProvider provider)
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["GuestBookConnect"].ConnectionString;
             Provider = provider;
         }
         public IEnumerable<GuestBookModel> LoadGuestBooks()
         {
-            var gbooks = Provider.Query<GuestBookModel>(ConnectionString 
-                , @"select GuestBookId,  GuestBookName from GuestBooks order by GuestBookName"
+            var gbooks = Provider.Query<GuestBookModel>(@"select GuestBookId,  GuestBookName from GuestBooks order by GuestBookName"
                 , CommandType.Text);
 
             return gbooks;
@@ -34,8 +30,7 @@ namespace FacadeServices
 
         public GuestBookModel AddGuestBook(GuestBookModel book)
         {
-           Provider.Execute(ConnectionString
-                , @"insert into GuestBooks(GuestBookName) values(@szGuestBookName)"
+           Provider.Execute(@"insert into GuestBooks(GuestBookName) values(@szGuestBookName)"
                 , new { szGuestBookName = book.GuestBookName }
                 , CommandType.Text);
             return book;
@@ -43,16 +38,14 @@ namespace FacadeServices
 
         public GuestBookModel DeleteGuestBook(GuestBookModel book)
         {
-            Provider.Execute(ConnectionString
-                 , @"delete from GuestBooks where GuestBookId=@nGuestBookId"
+            Provider.Execute(@"delete from GuestBooks where GuestBookId=@nGuestBookId"
                  , new { nGuestBookId = book.GuestBookId }
                  , CommandType.Text);
             return book;
         }
         public GuestBookModel LoadGuestBook(int guestBookId)
         {
-            var gbooks = Provider.Query<GuestBookModel>(ConnectionString
-                , @"select GuestBookId,  GuestBookName from GuestBooks where GuestBookId=@nGuestBookId"
+            var gbooks = Provider.Query<GuestBookModel>(@"select GuestBookId,  GuestBookName from GuestBooks where GuestBookId=@nGuestBookId"
                 , new { nGuestBookId = guestBookId}
                 , CommandType.Text);
 
@@ -61,8 +54,7 @@ namespace FacadeServices
 
         public void UpdateGuestBook(GuestBookModel  book)
         {
-            Provider.Execute(ConnectionString
-                , @"update GuestBooks set GuestBookName=@szGuestBookName where GuestBookId=@nGuestBookId"
+            Provider.Execute(@"update GuestBooks set GuestBookName=@szGuestBookName where GuestBookId=@nGuestBookId"
                 , new { szGuestBookName = book.GuestBookName, nGuestBookId = book.GuestBookId }
                 , CommandType.Text);
         }
@@ -70,8 +62,7 @@ namespace FacadeServices
         public IEnumerable<MessageModel> LoadMessages()
         {
             
-            var messages = Provider.Query<MessageModel>(ConnectionString
-                , @"select MessageId, Title, Body, CreateDate, GuestBookId, UserId from dbo.Messages order by CreateDate desc"
+            var messages = Provider.Query<MessageModel>(@"select MessageId, Title, Body, CreateDate, GuestBookId, UserId from dbo.Messages order by CreateDate desc"
                 , CommandType.Text);
             return messages;
         }
@@ -79,8 +70,7 @@ namespace FacadeServices
         public IEnumerable<MessageModel> LoadMessagesInBook(int guestBookId)
         {
 
-            var messages = Provider.Query<MessageModel>(ConnectionString
-                , @"select MessageId, Title, Body, CreateDate, GuestBookId, UserId from dbo.Messages 
+            var messages = Provider.Query<MessageModel>(@"select MessageId, Title, Body, CreateDate, GuestBookId, UserId from dbo.Messages 
                             where  GuestBookId=@nGuestBookId                       
                             order by CreateDate desc"
                 , new { nGuestBookId = guestBookId}
@@ -90,8 +80,7 @@ namespace FacadeServices
 
         public void AddMessage(MessageModel model)
         {
-            Provider.Execute(ConnectionString
-                , @"insert into Messages(Title, Body, UserId, GuestBookId) values(@szTitle, @szBody, null, @szGuestBookId)"
+            Provider.Execute(@"insert into Messages(Title, Body, UserId, GuestBookId) values(@szTitle, @szBody, null, @szGuestBookId)"
                 , new {szTitle = model.Title, szBody = model.Body, szGuestBookId = model.GuestBook.GuestBookId}
                 , CommandType.Text);
 

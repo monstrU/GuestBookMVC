@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -27,13 +28,15 @@ namespace GuestBook
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            var connectionString = ConfigurationManager.ConnectionStrings["GuestBookConnect"].ConnectionString;
             ObjectFactory.Initialize(cfg =>
             {
                 cfg.For<IGuestBookService>().Use<GuestBookService>();
-                cfg.For<IDataProvider>().Use<DataProvider>();
+                cfg.For<IDataProvider>().Use<DataProvider>()
+                   .Ctor<string>("connectionString").Is(connectionString);
             });
-        
 
+            //IoC.Initialize().GetInstance<IWorkplaceFacade>()
     
             DependencyResolver.SetResolver(new ControllerResolver());
 
