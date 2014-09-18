@@ -1,0 +1,6 @@
+﻿@model DomainModel.GuestBookModel
+
+@Html.HiddenFor(m => m.GuestBookId)
+@Html.TextBoxFor(m => m.GuestBookName)
+@Html.LabelFor(m => m.GuestBookName)
+@Html.ValidationMessageFor(m => m.GuestBookName)

@@ -1,0 +1,15 @@
+﻿@model DomainModel.GuestBookModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+}
+
+@using (Html.BeginForm(MVC.Admin.Entity.ActionNames.Add, MVC.Admin.Entity.Name, new {area = ""}))
+{
+    @Html.Partial(MVC.Admin.Shared.Views.SaveAndAdd, Model)
+    
+    <div>
+            <input type="submit" value="добавить" />
+            @Html.ActionLink("назад", MVC.Admin.Entity.Index())
+        </div>
+}

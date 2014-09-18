@@ -1,0 +1,17 @@
+﻿@model GuestBook.ModelView.MessagesInGuestBooksModelview
+    @{
+        ViewBag.Title = "Гостевая книга Call центра";
+    }
+    @Html.ActionLink("добавить отзыв", MVC.Home.ActionNames.Edit)
+
+@Html.ValidationSummary()
+
+    @foreach (var message in Model.Messages)
+    {
+        <div class="message_box">
+            <div class="message_title">@message.Title</div>
+            <div class="message_body">@message.Body</div>
+            <div class="message_date">@string.Format("{0:dd.MM.yyyy HH:ss}", message.CreateDate) </div>
+        </div>
+    }
+

@@ -1,0 +1,39 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            <div>
+                <span>Отзывы клиентов call-центра</span>
+                <div class="user_box">@Html.ActionLink("администрирование", MVC.Admin.Entity.ActionNames.Index, MVC.Admin.Entity.Name, new { area = MVC.Admin.Entity.Area }, null)</div>
+            </div>
+        </div>
+        <div id="content">
+
+            @RenderBody()
+        </div>
+        <div id="sidebar">
+
+            @{
+                Html.RenderAction(MVC.Home.ActionNames.GuestBooksList, MVC.Home.Name);
+            }
+
+        </div>
+        <div class="clear"></div>
+        <div id="footer">&copy; ООО Информзащита</div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DomainModel.GuestBookModel>
+
+@{
+    ViewBag.Title = "Администрирование категорий госетвых книг";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+}
+@Html.ActionLink("добавить", MVC.Admin.Entity.Actions.Add())
+@foreach (var book in Model)
+{
+    <div class="message_box">
+        <div class="book_box">
+            @book.GuestBookName
+            @Html.ActionLink("ред", MVC.Admin.Entity.ActionNames.Edit, new { id = book.GuestBookId })
+            @Html.ActionLink("уд", MVC.Admin.Entity.ActionNames.DeleteGuestBook, new { id = book.GuestBookId })
+        </div>
+    </div>
+}

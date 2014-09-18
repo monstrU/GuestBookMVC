@@ -1,0 +1,151 @@
+﻿*
+{
+    margin: 0;
+    padding: 0px;
+}
+
+:focus, :active
+{
+    outline: 0;
+}
+
+ul, ol
+{
+    list-style: none;
+}
+
+img
+{
+    border: 0;
+}
+
+body
+{
+    font: .74em Arial, Helvetica, sans-serif;
+    color: #444;
+    background: #fdfbfb;
+    line-height: 1.6em;
+    padding: 1ex;
+}
+
+.title_block
+{
+    display: inline-block;
+}
+
+    .title_block h2
+    {
+        display: inline-block;
+        padding-left: 3ex;
+    }
+
+.settings_block
+{
+    float: right;
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 35px;
+    padding-top: 1ex;
+    padding-bottom: 0;
+}
+
+a
+{
+    color: #008BCE;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.menu
+{
+    background-color: #00A558;
+    padding: 1ex;
+    margin-left: -1ex;
+    margin-right: -1ex;
+}
+
+a.user_link
+{
+    color: #00A558;
+}
+
+.menu a
+{
+    text-decoration: underline;
+    color: white;
+    font-weight: 700;
+}
+
+    .menu a:hover
+    {
+        color: rgb(25, 43, 140);
+    }
+
+    h2
+{
+margin: 0 0 1em;
+}
+
+.header
+{
+    padding: 1ex;
+}
+.positive_tone 
+{
+    color: #00A558;
+}
+.negative_tone 
+{
+    color: #cb73ac;
+}
+.neutral_tone
+{
+    color: rgb(182, 173, 159);
+}
+a.command_link 
+{
+    text-decoration: none;
+    color: #99A4E0;
+    border-bottom: 1px  dotted;
+    line-height: 1.2em;
+    font-size: 90%;
+}
+.error_box 
+{
+    color: red;
+    font-weight: 700;    
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.selected_book {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #008BCE;
+}
+li a {
+    white-space: nowrap;
+}

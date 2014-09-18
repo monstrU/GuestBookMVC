@@ -1,0 +1,15 @@
+﻿@model GuestBook.ModelView.GuestBooksOnCardModelView
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    <ul>
+        @foreach (var book in Model.GuestBooks)
+        {
+            <li class="@((Model.SelectedGuestBookId != book.GuestBookId) ? "":"selected_book")">@Html.ActionLink(book.GuestBookName, MVC.Home.ActionNames.Index, MVC.Home.Name, new { id = @book.GuestBookId }, null)   </li>
+        }
+
+    </ul>
+}

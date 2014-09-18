@@ -1,0 +1,90 @@
+﻿#container {
+    width: 700px; /* Ширина макета */
+    margin: 0 auto; /* Выравниваем по центру */
+    background: #f0f0f0; /* Цвет фона правой колонки */
+}
+
+.header {
+    background: #8fa09b; /* Цвет фона */
+    padding: 5px; /* Отступы вокруг текста */
+}
+
+.header span {
+        font-size: 24pt; /* Размер текста */
+        font-weight: bold; /* Жирное начертание */
+        color: #edeed5; /* Цвет текста */
+ }
+div.user_box {
+    float: right;
+    padding-top: 1ex;
+}
+div.user_box a {
+    color: #edeed5!important;
+}
+
+#content {
+    float: left; /* Обтекание по правому краю */
+    width: 450px; /* Ширина левой колонки */
+    padding: 10px; /* Поля вокруг текста */
+    border-right: 1px dashed #183533; /* Линия справа */
+    background: #fff; /* Цвет фона левой колонки */
+    min-height: 150px;
+}
+
+    #content p {
+        margin-top: 0.3em; /* Отступ сверху */
+    }
+
+#sidebar {
+    float: left; /* Обтекание по правому краю */
+    width: 120px; /* Ширина */
+    padding: 10px; /* Отступы вокруг текста */
+}
+
+#footer {
+    background: #8fa09b; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 5px; /* Отступы вокруг текста */
+}
+
+.clear {
+    clear: both; /* Отмена обтекания */
+}
+div.message_box 
+{
+    border: #8fa09b solid 1px;
+    background-color: #f9f9f0;
+    margin-bottom: 0.5ex;
+}
+div.message_title {
+    font-weight: 700;
+    padding: 1ex;
+}
+
+div.message_body {
+    padding: 0ex 1ex 1ex 1ex;
+}
+div.message_date {
+    text-align: right;
+    color: #7a7b73;
+    padding: 0ex 1ex 1ex 1ex;
+    font-size: 80%;
+}
+table.item_card {
+    vertical-align: top;
+}
+table.item_card td:first-child {
+    text-align: right;
+    padding-right: 1ex;
+}
+
+div.message_box .book_box {
+    padding: 1ex;
+}
+
+table.item_card td input,
+table.item_card td textarea,
+table.item_card td select
+{
+    width: 300px;
+}

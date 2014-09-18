@@ -1,0 +1,32 @@
+﻿@model GuestBook.ModelView.EditMessageModelView
+
+@{
+    ViewBag.Title = "Добавьте запись в гостевую книгу";
+    
+}
+
+<h2>Добавьте запись в гостевую книгу</h2>
+@using (Html.BeginForm())
+{
+    <table class="item_card">
+        <tr>
+            <td>@Html.LabelFor(m => m.Message.Title)</td>
+            <td>@Html.EditorFor(m => m.Message.Title)</td>
+            <td>@Html.ValidationMessageFor(m => m.Message.Title)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Message.Body)</td>
+            <td>@Html.TextAreaFor(m => m.Message.Body)</td>
+            <td>@Html.ValidationMessageFor(m => m.Message.Body)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Message.GuestBook)</td>
+            <td>@Html.DropDownListFor(m => m.Message.GuestBook.GuestBookId, new SelectList(Model.GuestBooks, "GuestBookId", "GuestBookName"))</td>
+            <td></td>
+        </tr>
+
+    </table>
+    <input type="submit" value="добавить" />
+    
+    @Html.ActionLink("назад", MVC.Home.Actions.Index())
+}

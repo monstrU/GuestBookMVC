@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EnvDTE.Helper</id>
+    <version>1.0.0</version>
+    <authors>Matthieu MEZIL</authors>
+    <owners>Matthieu MEZIL</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package improves T4 experience</description>
+    <tags>EnvDTE</tags>
+  </metadata>
+</package>

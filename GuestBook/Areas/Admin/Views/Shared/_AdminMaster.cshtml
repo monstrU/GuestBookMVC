@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+@{
+    ViewBag.Title = "_AdminMaster";
+}
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div id="container">
+        <div class="header"><span>Администрирование</span> <div class="user_box">
+                                                            @Html.ActionLink("в рабочую зону", MVC.Home.ActionNames.Index, MVC.Home.Name, new { area = "" }, null)
+                                                        </div></div>
+
+        <div id="content">
+
+            @RenderBody()
+        </div>
+        <div id="sidebar">
+          <li><a href="#">Категории гостевых книг</a></li>  
+        </div>
+        <div class="clear"></div>
+        <div id="footer">&copy; ООО Информзащита</div>
+
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>
+
+
+
