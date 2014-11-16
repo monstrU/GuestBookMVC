@@ -29,15 +29,25 @@ namespace GuestBook
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var connectionString = ConfigurationManager.ConnectionStrings["GuestBookConnect"].ConnectionString;
+            /*
             ObjectFactory.Initialize(cfg =>
             {
                 cfg.For<IGuestBookService>().Use<GuestBookService>();
                 cfg.For<IDataProvider>().Use<DataProvider>()
                    .Ctor<string>("connectionString").Is(connectionString);
             });
+            */
 
-            //IoC.Initialize().GetInstance<IWorkplaceFacade>()
-    
+            IContainer Container;
+            Container = new Container(x =>
+            {
+                x.For<IGuestBookService>().Use<GuestBookService>();
+                x.For<IDataProvider>().Use<DataProvider>()
+                    .Ctor<string>("connectionString").Is(connectionString); ;
+            });
+            Container.in
+            Container.AssertConfigurationIsValid();
+
             DependencyResolver.SetResolver(new ControllerResolver());
 
 
