@@ -29,9 +29,17 @@ namespace DomainModel
         [DisplayName("гостевая книга")]
         public GuestBookModel GuestBook { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [UpdateValidate]
         public DateTime UpdateDate { get; set; }
+
+        //[Required(AllowEmptyStrings = true, ErrorMessage = "Введите число")]
+        //[RegularExpression(@"\d+(\,\d+){0,1}", ErrorMessage = "Введите число")]
+        public decimal Weight { get; set; }
+
+
+
+        public Nullable<decimal> WeightDouble { get; set; }
 
         public MessageModel()
         {

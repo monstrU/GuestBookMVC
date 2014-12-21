@@ -29,14 +29,14 @@ namespace GuestBook
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var connectionString = ConfigurationManager.ConnectionStrings["GuestBookConnect"].ConnectionString;
-            /*
+            
             ObjectFactory.Initialize(cfg =>
             {
                 cfg.For<IGuestBookService>().Use<GuestBookService>();
                 cfg.For<IDataProvider>().Use<DataProvider>()
                    .Ctor<string>("connectionString").Is(connectionString);
             });
-            */
+            
 
             IContainer Container;
             Container = new Container(x =>
@@ -45,13 +45,14 @@ namespace GuestBook
                 x.For<IDataProvider>().Use<DataProvider>()
                     .Ctor<string>("connectionString").Is(connectionString); ;
             });
-            Container.in
+            
             Container.AssertConfigurationIsValid();
 
             DependencyResolver.SetResolver(new ControllerResolver());
 
 
-        
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
 
         }
 

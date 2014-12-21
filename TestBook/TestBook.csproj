@@ -67,6 +67,10 @@
       <Project>{645bb4b7-74a5-430c-8077-ad376ec50dc9}</Project>
       <Name>DomainModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GuestBook\GuestBook.csproj">
+      <Project>{306A6773-659F-452A-80FC-32C888B2F93E}</Project>
+      <Name>GuestBook</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

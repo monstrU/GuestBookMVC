@@ -24,6 +24,11 @@
             <td>@Html.DropDownListFor(m => m.Message.GuestBook.GuestBookId, new SelectList(Model.GuestBooks, "GuestBookId", "GuestBookName"))</td>
             <td></td>
         </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Message.Weight)</td>
+            <td>@Html.TextBox("Message.Weight")</td>
+            <td></td>
+        </tr>
 
     </table>
     <input type="submit" value="добавить" />
