@@ -33,13 +33,15 @@ namespace TestBook
             service.Setup(s2 => s2.LoadMessagesInBook(bookId)).Returns(messageModels);
 
             var home = new HomeController(service.Object);
-            
-            dynamic result = home.Index(1);
+
+            var result = home.Index(1) as ViewResult;
             
             Assert.IsNotNull(result);
-            var model = result.Model;
+            
+            var model = result.Model as GuestBook.ModelView.MessagesInGuestBooksModelview;
             Assert.IsNotNull(model);
-            Assert.AreEqual(model.Messages.Count, messageModels.Count);
+            Assert.AreEqual(model.Messages.Count(), messageModels.Count);
+            Assert.AreEqual(result.ViewName, MVC.Home.Views.Index);
 
 
 
