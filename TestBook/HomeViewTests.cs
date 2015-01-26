@@ -25,16 +25,24 @@ namespace TestBook
                 GuestBookId = bookId,
                 GuestBookName = "Book name"
             });
-            service.Setup(s2 => s2.LoadMessagesInBook(bookId)).Returns(new List<MessageModel>
+            var messageModels = new List<MessageModel>
             {
                 new MessageModel() { MessageId = 1, Body = "message 1"},
                 new MessageModel() { MessageId = 2, Body = "message 2"}
-            });
+            };
+            service.Setup(s2 => s2.LoadMessagesInBook(bookId)).Returns(messageModels);
 
             var home = new HomeController(service.Object);
-            var result = home.Index();
-            Assert.IsNotNull(result);
             
+            dynamic result = home.Index(1);
+            
+            Assert.IsNotNull(result);
+            var model = result.Model;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(model.Messages.Count, messageModels.Count);
+
+
+
         }
     }
 }
